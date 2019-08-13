@@ -1,0 +1,46 @@
+<h2>Simple Book</h2>
+
+<form [formGroup] ="postBook" (ngSubmit)="onSubmit()">
+  <div>
+  <label>
+    Ten sach
+    <br>
+    <input type="text" formControlName="title">
+  </label>
+  </div>
+  <div *ngIf="postBook.get('title').invalid && postBook.get('title').touched" style="color: red">
+    bat buoc chieu dai toi thieu la 4
+  </div>
+  <div>
+    <label>
+      Tac Gia
+      <br>
+  <input type="text" formControlName="author">
+    </label>
+  </div>
+  <div *ngIf="postBook.get('author').invalid && postBook.get('author').touched" style="color: red">
+ bat buoc chieu dai toi thieu la 4
+  </div>
+  <label>
+  Chi tiet sach
+    <br>
+    <textarea formControlName="description" cols="30" rows="10"></textarea>
+  </label>
+  <div *ngIf="postBook.get('description').invalid && postBook.get('description').touched" style="color: red">
+    bat buoc chieu dai toi thieu la 14
+  </div>
+  <br>
+  <button type="submit">Submit</button>
+</form>
+<ul>
+  <li *ngFor="let post of postList; index as i">
+    <h3>
+      <a [routerLink]="['/blog', post.id]">
+        Post Id: {{post.id}} - {{post.title}} }
+      </a>
+    </h3>
+    <a [routerLink]="['/blog', post.id, 'edit']">Edit</a>
+
+    <button (click)="deletePost(i)">Delete</button>
+  </li>
+</ul>

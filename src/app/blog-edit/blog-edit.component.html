@@ -1,0 +1,32 @@
+<form [formGroup]="postBook" (ngSubmit)="onSubmit()">
+  <div>
+    <label>
+      Ten sach
+      <br>
+      <input type="text" formControlName="title">
+    </label>
+  </div>
+  <div *ngIf="postBook.get('title').invalid && postBook.get('title').touched" style="color: red">
+ chieu dai toi thieu tu 4
+  </div>
+  <div>
+    <label>
+   Tac gia
+      <br>
+      <input type="text" formControlName="author">
+    </label>
+  </div>
+  <div *ngIf="postBook.get('author').invalid && postBook.get('author').touched" style="color: red">
+    chieu dai toi thieu tu 4
+  </div>
+  <label>
+    Chi tiet sach
+    <br>
+    <textarea formControlName="description" cols="30" rows="10"></textarea>
+  </label>
+  <div *ngIf="postBook.get('description').invalid && postBook.get('').touched" style="color: red">
+  chieu dai toi htieu tu 14
+  </div>
+  <br>
+  <button type="submit">Submit</button>
+</form>
